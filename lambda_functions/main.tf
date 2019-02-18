@@ -9,9 +9,5 @@ resource "aws_lambda_function" "bucket_notification_lambda" {
   role             = "${var.lambda_role}"
   handler          = "echo.bucket_notification"
   source_code_hash = "${base64sha256(file("lambda_function.zip"))}"
-  runtime          = "python3.6"
-}
-
-output "bucket_notification_lambda_arn" {
-    value = "${aws_lambda_function.bucket_notification_lambda.arn}"
+  runtime          = "python3.7"
 }

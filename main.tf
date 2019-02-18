@@ -9,6 +9,7 @@ module "s3_bucket" {
   source = "./s3_bucket"
   region = "${var.region}"
   bucket_name = "${var.bucket_name}"
+  bucket_notification_lambda_arn = "${module.lambda_functions.bucket_notification_lambda_arn}"
 }
 
 module "lambda_functions" {
