@@ -17,3 +17,11 @@ resource "aws_iam_role" "lambda_iam" {
 }
 EOF
 }
+
+data "aws_iam_policy" "AWSLambdaBasicExecutionRole" {
+  arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+resource "aws_iam_role_policy_attachment" "lambda_basic_role_attach" {
+  role       = "${aws_iam_role.lambda_iam.name}"
+  policy_arn = "${data.aws_iam_policy.AWSLambdaBasicExecutionRole.arn}"
+}
