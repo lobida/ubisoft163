@@ -12,8 +12,12 @@ module "s3_bucket" {
   bucket_notification_lambda_arn = "${module.lambda_functions.bucket_notification_lambda_arn}"
 }
 
+module "db" {
+  source = "./db"
+}
+
 module "lambda_functions" {
   source = "./lambda_functions"
   lambda_role = "${module.global_iam.lambda_iam_arn}"
-  region = "${var.region}"
+  db_arn = "${module.db.bucket_ops_arn}"
 }
