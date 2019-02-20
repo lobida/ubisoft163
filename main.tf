@@ -4,6 +4,7 @@ provider "aws" {
 
 module "global_iam" {
   source = "./global_iam"
+  db_arn = "${module.db.bucket_ops_arn}"
 }
 module "s3_bucket" {
   source = "./s3_bucket"
@@ -17,6 +18,5 @@ module "db" {
 module "lambda_functions" {
   source = "./lambda_functions"
   lambda_role = "${module.global_iam.lambda_iam_arn}"
-  db_arn = "${module.db.bucket_ops_arn}"
   db_table = "${module.db.bucket_ops_name}"
 }

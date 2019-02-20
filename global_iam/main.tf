@@ -38,7 +38,7 @@ resource "aws_iam_policy" "lambda_access_db_policy" {
 				"dynamodb:UpdateItem"
       ],
       "Effect": "Allow",
-      "Resource": "*"
+      "Resource": "${var.db_arn}"
     }
   ]
 }
