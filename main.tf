@@ -14,6 +14,7 @@ module "s3_bucket" {
 }
 module "db" {
   source = "./db"
+  table_name = "${var.table_name}"
 }
 module "lambda_functions" {
   source = "./lambda_functions"

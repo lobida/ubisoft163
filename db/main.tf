@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "bucket_ops" {
-  name           = "BucketOperations"
+  name           = "${var.table_name}"
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "object_name"
